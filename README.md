@@ -29,6 +29,13 @@ So your app lives in a folder called `www` next to the `Vagrantfile` and your pu
 
 The site is then available at `http://example.co.uk:8080`.
 
+Versions
+------------------------------------------------------------------------------
+- Ubuntu: 12.10
+- PHP: 5.4.32 (via [ppa:ondrej/php5-oldstable](https://launchpad.net/~ondrej/+archive/ubuntu/php5-oldstable))
+- MySQL: latest from apt
+- Apache2: latest from apt
+
 Puppet Modules
 ------------------------------------------------------------------------------
 - [Apache](https://forge.puppetlabs.com/puppetlabs/apache)
