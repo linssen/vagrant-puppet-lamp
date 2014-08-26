@@ -5,12 +5,15 @@ As it says on the tin: a basic setup for a LAMP stack.
 Installation
 ------------------------------------------------------------------------------
 ```bash
-$ cp Vagrantfile.sample Vagrantfile
+$ # Suggest you include it as a submodule, but you could just download the repo
+$ # into the same location.
+$ git submodule add git@github.com:linssen/vagrant-puppet-lamp.git puppet
+$ git submodule init && git submodule update
+$ # Copy the sample vagrant file and edit the settings to your own requirements.
+$ cp puppet/Vagrantfile.sample Vagrantfile
 ```
 
-Change `example.co.uk` to the sitename you're working from. It's important to forward that sitename in your hosts (on OS X at `/etc/hosts`) to localhost.
-
-Then bring the box up with.
+Edit the  Then bring the box up with. You must have a directory called `www` where your app lives, because it's a shared folder requirement for Vagrant. Change that in the Vagrantfile if you so wish.
 
 ```bash
 $ vagrant up
