@@ -29,6 +29,20 @@ So your app lives in a folder called `www` next to the `Vagrantfile` and your pu
 
 The site is then available at `http://example.co.uk:8080`.
 
+You can connect to the guest MySQL DB from the host using Sequel Pro (other DB admin GUIs are available) over SSH. The details are
+
+Setting | Value
+------- | -------
+Name | `Vagrant`
+MySQL Host | `127.0.0.1`
+Username | `root`
+Password | `root`
+Port | `3306`
+SSH Host | `192.168.33.10`
+SSH User | `vagrant`
+SSH Password | `~/.vagrant.d/insecure_private_key`
+SSH Port | `22`
+
 Versions
 ------------------------------------------------------------------------------
 - Ubuntu: 12.10
