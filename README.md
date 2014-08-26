@@ -20,6 +20,9 @@ $ vagrant up
 $ vagrant provision
 ```
 
+Usage
+------------------------------------------------------------------------------
+
 The site is served from `/var/www/example.co.uk/public_html` so you're free to add script above. Vagrant will share the folder `www` at root level to `/var/www/example.co.uk`.
 
 So your app lives in a folder called `www` next to the `Vagrantfile` and your public html lives in `www/public_html`.
