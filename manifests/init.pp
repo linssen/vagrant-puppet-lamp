@@ -1,3 +1,5 @@
+$docroot = regsubst("/var/www/${::sitename}/${::www_dir}", "/$", "")
+
 node default {
     exec { "apt-update":
       command => "/usr/bin/apt-get update",
@@ -29,13 +31,13 @@ node default {
         path => "${::apache::params::lib_path}/libphp5.so",
     }
     apache::mod { "rewrite": }
-    apache::vhost { $sitename:
-        servername => $sitename,
+    apache::vhost { $::sitename:
+        servername => $::sitename,
         port => "80",
-        docroot  => "/var/www/${sitename}/public_html",
-        serveraliases => ["*.${sitename}",],
+        docroot  => $docroot,
+        serveraliases => ["*.${::sitename}",],
         directories => [
-            { path => "/var/www/${sitename}/public_html",
+            { path => $docroot,
                 allow_override => ["all",],
             },
         ],

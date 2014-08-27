@@ -3,10 +3,17 @@
 
 VAGRANTFILE_API_VERSION = "2"
 
+# The Apache vhost will use this, and it will set a wildcard subdomain, so
+# things like dev.example.co.uk will also work
 sitename = "example.co.uk"
+# The directory relative to this file where you application lives
+project_dir = "www"
+# The directory for Apache to serve index.php from
+www_dir = "public_html"
+
 settings = {
-  :box => "precise64",
-  :ip => "192.168.33.10",
+    :box => "precise64",
+    :ip => "192.168.33.10",
 }
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -14,7 +21,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.box = settings[:box]
 
     # Hostname
-    config.vm.host_name = "#{sitename}"
+    config.vm.host_name = sitename
 
     # Virtualbox provider box url
     config.vm.provider :virtualbox do |vb|
@@ -32,7 +39,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.network :private_network, ip: settings[:ip]
 
     # Shared folders
-    config.vm.synced_folder "www", "/var/www/#{sitename}"
+    config.vm.synced_folder "#{project_dir}", "/var/www/#{sitename}"
 
     # Puppet config
     config.vm.provision :puppet do |puppet|
@@ -40,7 +47,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         puppet.manifest_file  = "init.pp"
         puppet.module_path = "puppet/modules"
         puppet.facter = {
-            "sitename" => "#{sitename}"
+            sitename: sitename,
+            project_dir: project_dir,
+            www_dir: www_dir,
         }
     end
 
