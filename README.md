@@ -7,7 +7,7 @@ Installation
 ```bash
 $ # Suggest you include it as a submodule, but you could just download the repo
 $ # into the same location.
-$ git submodule add git@github.com:linssen/vagrant-puppet-lamp.git puppet
+$ git submodule add https://github.com/linssen/vagrant-puppet-lamp.git puppet
 $ git submodule init && git submodule update
 $ # Copy the sample vagrant file and edit the settings to your own requirements.
 $ cp puppet/Vagrantfile.sample Vagrantfile
