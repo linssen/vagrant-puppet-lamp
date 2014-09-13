@@ -22,6 +22,8 @@ node default {
     php::module { "mysql": }
     php::module { "intl": }
     php::module { "mcrypt": }
+    php::module { "imagick": }
+    php::module { "gd": }
 
     class { "apache":
         default_vhost => false,
