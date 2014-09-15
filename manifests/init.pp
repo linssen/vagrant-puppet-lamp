@@ -24,6 +24,7 @@ node default {
     php::module { "mcrypt": }
     php::module { "imagick": }
     php::module { "gd": }
+    php::module { "curl": }
 
     class { "apache":
         default_vhost => false,
